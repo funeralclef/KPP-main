@@ -1,0 +1,61 @@
+<form [formGroup]="studentsForm" (ngSubmit)="OnSubmit()"> 
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Форма</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-item>
+        <ion-label position="floating">ПІБ студента</ion-label>
+        <ion-input id="student-name" type="text" formControlName="studentName"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Група</ion-label>
+        <ion-input id="student-group" type="text" formControlName="studentGroup"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Середній бал</ion-label>
+        <ion-input id="student-grade" type="number" formControlName="studentGrade"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Розмір стипендії</ion-label>
+        <ion-input id="student-grant" type="number" formControlName="studentGrant"></ion-input>
+      </ion-item>
+    
+      <ion-card formArrayName="disciplines">
+        <ion-card-header>
+          <ion-card-title>Список дисциплін і балів</ion-card-title>
+        </ion-card-header>
+        
+        <ion-card-content>
+          <ion-button (click)="addDiscp()">
+            <ion-icon slot="start" name="add"></ion-icon>
+            Додати дисципліну
+          </ion-button>
+
+          <div *ngFor="let discipline of getControls(); let i = index" [formGroupName]="i">
+            <ion-item>
+              <ion-label position="floating">Назва дисципліни</ion-label>
+              <ion-input type="text" formControlName="name" placeholder="Назва дисципліни"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label position="floating">Оцінка</ion-label>
+              <ion-input type="number" formControlName="grade" placeholder="Оцінка"></ion-input>
+            </ion-item>
+            <ion-button (click)="deleteDiscp(i)">
+              <ion-icon slot="start" name="trash"></ion-icon>
+              Видалити
+            </ion-button>
+          </div>
+        </ion-card-content>
+      </ion-card>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-button type="submit" expand="block" fill="outline" [disabled]="!studentsForm.valid">
+    Submit
+  </ion-button>
+</form>

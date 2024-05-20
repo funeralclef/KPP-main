@@ -1,0 +1,43 @@
+<app-my-header name="Лабораторна робота №6" variant="Варіант 6"> </app-my-header>
+
+<ion-content [fullscreen]="true">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Завдання </ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <p>Розробити ієрархію класів: Журнал, книга, друковане видання, підручник. Можна додавати класи 
+        або інтерфейси, а також робити їх абстрактними. Кожен клас повинен реалізувати як мінімум
+        два інтерфейси та два методи.</p>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Інформація про екземпляри класу Book</ion-card-title>
+    </ion-card-header>
+
+      <ion-card-content>
+      <ion-label position="stacked">Введіть cвій рік навчання:</ion-label>
+      <ion-input type="number" id="x" placeholder="1" [(ngModel)]="Inputx"></ion-input>
+      <ion-button (click)="info_tbook(Inputx)">Дізнатись</ion-button>
+      <ion-item> {{show_tbook}} </ion-item>
+      <ion-item> {{show_grade_tbook}} </ion-item>
+    </ion-card-content>
+  </ion-card>
+   
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Інформація про екземпляри класу Magazine</ion-card-title>
+    </ion-card-header>
+    
+      <ion-card-content>
+      <ion-button (click)="info_magazine()">Дізнатись</ion-button>
+      <ion-item> {{show_magazine}} </ion-item>
+      <ion-item> {{show_status}} </ion-item>
+      <ion-item> {{show_discouted}} </ion-item>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
+

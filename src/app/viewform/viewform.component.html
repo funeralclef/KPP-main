@@ -1,0 +1,26 @@
+<app-my-form (StudentAdd)="addStudent($event)"></app-my-form>
+
+<ion-card *ngFor="let student of students; let i = index">
+  <ion-card-header>
+    <ion-card-title>{{ student.name }}</ion-card-title>
+  </ion-card-header>
+  <ion-card-content>
+    <p>Група: {{ student.group }}</p>
+    <p>Середній бал: {{ student.grade }}</p>
+    <p>Стипендія: {{ student.grant }}</p>
+    <p>Дисципліни:</p>
+    <ul>
+      <li *ngFor="let discipline of student.disciplines">
+        {{ discipline.name }}: {{ discipline.grade }}
+      </li>
+    </ul>
+  </ion-card-content>
+  <ion-button (click)="update()">Редагувати</ion-button>
+  <app-updateform 
+    [student]="student" 
+    [show]="show_update" 
+    *ngIf="show_update" 
+    (showChange)="showUp($event)" 
+    (studentChange)="update_save($event, i)">
+  </app-updateform>
+</ion-card>

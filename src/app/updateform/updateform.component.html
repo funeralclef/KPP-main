@@ -1,0 +1,27 @@
+<ion-card *ngIf="student">
+  <ion-card-header>
+    <ion-card-title>
+      <ion-label position="floating">Cтудент</ion-label>
+    </ion-card-title>
+  </ion-card-header>
+  
+  <ion-card-content>
+    <ion-item>
+      <ion-label position="floating">ПІБ студента</ion-label>
+      <ion-input [(ngModel)]="student.name"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Група</ion-label>
+      <ion-input [(ngModel)]="student.group"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Середній бал</ion-label>
+      <ion-input [(ngModel)]="student.grade" type="number"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Стипендія</ion-label>
+      <ion-input [(ngModel)]="student.grant" type="number"></ion-input>
+    </ion-item>
+  </ion-card-content>
+  <ion-button (click)="save(student.name, student.group, student.grade, student.grant)">Зберегти</ion-button>
+</ion-card>
