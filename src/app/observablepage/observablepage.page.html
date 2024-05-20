@@ -1,0 +1,68 @@
+<app-my-header name="Лабораторна робота №10" variant="Варіант 8"></app-my-header>
+<ion-content [fullscreen]="true">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Завдання</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p>Необхідно додати сторінку для роботи з сервісами. Розробити сервіс для спостерігання за значенням у довіднику видів товарів та список товарів</p>
+    </ion-card-content>
+  </ion-card>
+  <ion-content>
+    <h2>Довідник жанрів та список фільмів</h2>
+    <ion-item>
+      <ion-label>Поточний жанр: {{genre.name}}</ion-label>
+      <ion-button (click)="nextGenre()">Наступний жанр</ion-button>
+    </ion-item>
+    <ion-list>
+      <ion-list-header>
+        <ion-label>Фільми у жанрі "{{genre.name}}":</ion-label>
+      </ion-list-header>
+      <ion-item *ngFor="let movie of movieList.searchMovieResult">
+        <ion-label>
+          <h2>{{ movie }}</h2>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Додати новий жанр</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-item>
+          <!-- Ensure the input is treated as text -->
+          <ion-input #newGenreName type="text" placeholder="Назва жанру"></ion-input>
+        </ion-item>
+        <ion-button expand="block" (click)="addGenre(newGenreName.value?.toString() ?? '')">Додати жанр</ion-button>
+      </ion-card-content>
+    </ion-card>
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Додати новий фільм</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-item>
+          <!-- Ensure the input is treated as text -->
+          <ion-input #movieName type="text" placeholder="Назва фільму"></ion-input>
+        </ion-item>
+        <ion-item>
+          <!-- Ensure the input is treated as text -->
+          <ion-input #movieDirector type="text" placeholder="Режисер"></ion-input>
+        </ion-item>
+        <ion-item>
+          <!-- Ensure the input is treated as number and converted to string -->
+          <ion-input #movieYear type="number" placeholder="Рік випуску"></ion-input>
+        </ion-item>
+        <ion-item>
+          <!-- Ensure the input is treated as number and converted to string -->
+          <ion-input #movieDuration type="number" placeholder="Тривалість (хв)"></ion-input>
+        </ion-item>
+        <ion-button expand="block" (click)="addMovie(
+            movieName.value?.toString() ?? '',
+            movieDirector.value?.toString() ?? '',
+            movieYear.value?.toString() ?? '0',
+            movieDuration.value?.toString() ?? '0')">Додати фільм</ion-button>
+      </ion-card-content>
+    </ion-card>
+  </ion-content>
+</ion-content>

@@ -1,8 +1,7 @@
 import { TestBed } from '@angular/core/testing';
-
 import { ValidatorGradeService } from './validatorGrade.service';
 
-//npm test
+// npm test
 
 describe('ValidatorGradeService', () => {
   let service: ValidatorGradeService;
@@ -33,6 +32,17 @@ describe('ValidatorGradeService', () => {
 
   it('перевірка балу на додатнє дійсне число', () => {
     let s = service.validate_grade(15.25);
+    expect(s).toBe(true);
+  });
+
+  it('перевірка чи бал не перевищує 100', () => {
+    let s = service.validate_grade(101);
     expect(s).toBe(false);
-  }); 
+  });
+
+  it('перевірка чи бал дорівнює 100', () => {
+    let s = service.validate_grade(100);
+    expect(s).toBe(true);
+  });
 });
+

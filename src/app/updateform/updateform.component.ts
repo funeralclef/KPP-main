@@ -1,6 +1,6 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { Student } from '../my-form/Class/student';
-import { Discipline } from '../my-form/Class/discipline'; // Правильний шлях до Discipline
+import { Discipline } from '../my-form/Class/discipline'; 
 import { ValidatorGradeService } from '../my-form/Services/validatorGrade.service';
 import { ValidatorGrant } from '../my-form/Services/validatorGrant.service';
 
